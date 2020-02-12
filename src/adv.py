@@ -15,7 +15,6 @@ room = {
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure chamber! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south."""),
 }
 
-
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -44,13 +43,15 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 
-player = Player("James", room['outside'])
+print('\n -------------------------------\n',
+'Welcome to your new adventure!!\n',
+'-------------------------------\n')
+
+name = input('Please enter your name : ')
+player = Player(name, room['outside'])
+
 print(player)
 print(player.currentRoom)
-
-def displayCurrentPosition():
-    print(
-        f'Your current position: \n{player.currentRoom} \nInfo: {player.currentRoom.description}')
 
 directions = ['n', 's', 'e', 'w']
 
@@ -62,7 +63,7 @@ while True:
         print(f'You selected {playerInput}\n')
         player.movePlayer(playerInput)
     elif playerInput == 'q':
-        print("Goodbye!!\n")
+        print("\nGoodbye!!\n")
         exit()
     else:
         ('Invalid entry, please choose again')
