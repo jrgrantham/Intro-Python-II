@@ -26,6 +26,10 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# Define room contents
+
+room['foyer'].items = ['torch', 'axe', 'bucket']
+
 #
 # Main
 #
@@ -65,5 +69,7 @@ while True:
     elif playerInput == 'q':
         print("\nGoodbye!!\n")
         exit()
+    elif playerInput == 'p':
+        player.carrying()
     else:
         ('Invalid entry, please choose again')
