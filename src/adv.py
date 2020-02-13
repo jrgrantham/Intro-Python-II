@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from items import Items
 
 # Declare all the rooms
 
@@ -28,7 +29,9 @@ room['treasure'].s_to = room['narrow']
 
 # Define room contents
 
-room['foyer'].items = ['torch', 'axe', 'bucket']
+# room['foyer'].items = ['torch', 'axe', 'bucket']
+
+room['foyer'].items = [Items('torch', 'you need this to see in the dark'), Items('axe', 'this might be useful for...')]
 
 #
 # Main
@@ -71,5 +74,7 @@ while True:
         exit()
     elif playerInput == 'p':
         player.carrying()
+    elif playerInput == 'g':
+        player.get()
     else:
-        ('Invalid entry, please choose again')
+        print('Invalid entry, please choose again\n')

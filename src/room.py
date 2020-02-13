@@ -11,18 +11,18 @@ class Room:
     self.w_to = None
     self.items = items
 
+  def returnItems(self):
+    output = '  Contents: '
+    if self.items:
+      for item in self.items:
+        output += f'{item.name}, '
+    else:
+      output += 'This place is empty.'
+    return output
+
   def __str__(self):
     roomDetails = ''
     roomDetails += f'Location:   {self.name}\n'
     roomDetails += f'  Info:     {self.description}\n'
-    
-    contents = ''
-    if self.items:
-      for item in self.items:
-        contents += f'{item}, '
-    else:
-      contents = 'This place is empty.'
-
-    roomDetails += f'  Contents: {contents}\n'
-
+    roomDetails += f'{self.returnItems()}\n'
     return roomDetails

@@ -28,3 +28,6 @@ class Player:
       print(self.currentRoom)
     else:
       print('Sorry, cannot go that way...', '\n')
+
+  def get(self):
+    print(self.currentRoom.items)
