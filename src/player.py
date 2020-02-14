@@ -15,9 +15,9 @@ class Player:
     for item in self.items:
       carrying += f'{item}, '
     if self.items:
-      print(carrying)
+      return carrying
     else:
-      print('You are carrying nothing\n')
+      return 'You are carrying nothing\n'
 
   def movePlayer(self, direction):
     # check if theres a vaild room in the direction given
@@ -29,5 +29,20 @@ class Player:
     else:
       print('Sorry, cannot go that way...', '\n')
 
-  def get(self):
-    print(self.currentRoom.items)
+  def get(self, chosenItem):
+    availableItems = [item.name.lower() for item in self.currentRoom.items]
+    if chosenItem in availableItems:
+      for item in self.currentRoom.items:
+        if item.name.lower() == chosenItem:
+          self.items.append(item)
+          self.currentRoom.items.remove(item)
+          print(f'You are now carrying a {item.name}')
+
+  def drop(self, chosenItem):
+    currentItems = [item.name.lower() for item in self.items]
+    if chosenItem in currentItems:
+      for item in self.items:
+        if item.name.lower() == chosenItem:
+          self.items.remove(item)
+          self.currentRoom.items.append(item)
+          print(f'You are no longer carrying a {item.name}')

@@ -63,18 +63,26 @@ print(player.currentRoom)
 directions = ['n', 's', 'e', 'w']
 
 while True:
+
     playerInput = ''
     playerInput = input(
-        'Which direction do you want to move: \n  Enter n, s, e, w or q : ')
+        'Please select an action:\n  To move, enter n, s, e, w\n  To get, or drop enter g or d + item\n  To quit, enter q\n  Input: ')
+
+    print(f'  You entered \'{playerInput}\'\n-------------------------------------\n')
+    splitInput = playerInput.split(' ')
+
     if playerInput in directions:
-        print(f'You selected {playerInput}\n')
         player.movePlayer(playerInput)
     elif playerInput == 'q':
         print("\nGoodbye!!\n")
         exit()
     elif playerInput == 'p':
-        player.carrying()
-    elif playerInput == 'g':
-        player.get()
+        print(player.carrying())
+    elif len(splitInput) == 2:
+        if splitInput[0] == 'g':
+            print(splitInput[1])
+            player.get(splitInput[1])
+        elif splitInput[0] == 'd':
+            player.drop(splitInput[1])
     else:
-        print('Invalid entry, please choose again\n')
+        print('  Invalid entry, please try again\n')
